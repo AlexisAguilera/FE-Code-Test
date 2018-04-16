@@ -1,13 +1,18 @@
-import {ACT_LOAD_COCKTAILS} from '../actions/ActionTypes';
+import {ACT_LOAD_COCKTAILS, SELECTED_COCKTAIL} from '../actions/ActionTypes';
 
 const initialState = {
-    cocktails: {}
+    cocktails: {},
+    cocktailDetail: {}
 }
 
 export default function authReducer(state = initialState, action) {
     switch (action.type) {
         case ACT_LOAD_COCKTAILS:
-            return Object.assign({}, state, { cocktails: action.props })
+            return Object.assign({}, state, { cocktails: action.props });
+            break;
+        case SELECTED_COCKTAIL:
+            return Object.assign({}, state, {cocktailDetail: action.props});
+            break;
         default:
             return state
     }
