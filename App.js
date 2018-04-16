@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   Platform,
@@ -12,14 +6,18 @@ import {
   View
 } from 'react-native';
 import Router from "./config/Router";
-import { createStore } from "redux";
+import reducers from "./reducers";
+import { Root } from "native-base";
+import { Provider } from "react-redux";
+import ReduxThunk from "redux-thunk";
+import { createStore, applyMiddleware } from "redux";
 
 export default class App extends Component<{}> {
   constructor(props) {
     super(props);
   }
   render() {
-    const store = createStore(reducers);
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Root>
         <Provider store={store}>
@@ -29,4 +27,3 @@ export default class App extends Component<{}> {
     );
   }
 }
-

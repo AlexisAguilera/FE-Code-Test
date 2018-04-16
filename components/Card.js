@@ -10,20 +10,20 @@ const Card = (props) => {
 };
 
 const style = {
-    containerStyle: {
-        backgroundColor: '#FFFFFF',
-        opacity: 1,
-        flex: 1,
-        borderRadius: 3,
-        borderColor: '#ddd',
-        borderBottomWidth: 1,
-        shadowColor: '#000000',
-        shadowOpacity: 0.32,
-        elevation: 1,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 10
-    }
+  containerStyle: {
+      backgroundColor: '#FFFFFF',
+      opacity: 1,
+      flex: 1,
+      borderRadius: 3,
+      borderColor: '#ddd',
+      borderBottomWidth: 1,
+      shadowColor: '#000000',
+      shadowOpacity: 0.32,
+      elevation: 1,
+      marginLeft: 5,
+      marginRight: 5,
+      marginTop: 10
+  }
 };
 
 export default Card;

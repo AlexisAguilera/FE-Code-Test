@@ -1,42 +1,47 @@
-import React, { Component, View } from 'react';
-import { connect } from 'react-redux';
-import { ListView } from 'react-native';
-import ListItem from './ListItem';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import {  View , Text } from "react-native";
+import ListView from "../components/ListView";
 import { getCocktails } from "../actions";
+import Header from "../components/Header";
+import Spinner from "../components/Spinner";
+
+import { bindActionCreators } from "redux";
 
 class Home extends Component {
-    componentWillMount() {
-        this.props.getCocktails();
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
 
-        this.dataSource = ds.cloneWithRows(this.props.cocktails);
-    }
+  componentWillMount() {
+    this.props.getCocktails();
+  }
 
-    renderRow(cocktail) {
-        return <ListItem cocktail={cocktail} />;
-    }
-
-    render() {
-        return (
-            <ListView
-                dataSource={this.dataSource}
-                renderRow={this.renderRow}
-            />
-        );
-    }
-}
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(
-        {
-            getCocktails
-        },
-        dispatch
+  render() {
+    console.log("this.props.cocktails.cocktails", this.props.cocktails.cocktails);
+    return (
+      <View style={{ flex: 1 }}>
+        <Header/>
+        {this.props.loading ?
+          <Spinner />:
+        <ListView cocktails={this.props.cocktails.cocktails}/>}
+      </View>
     );
+
+  }
 }
-const mapStateToProps = store => {
-    return { cocktails: store.cocktails };
-};
+
+
+
+function mapStateToProps(store) {
+	return { cocktails: store.cocktails, loading: store.appReducer.loading };
+}
+
+
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(
+		{
+			getCocktails
+		},
+		dispatch
+	);
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

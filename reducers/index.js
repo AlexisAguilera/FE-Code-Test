@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 
-import cocktailsReducer from "./CocktailsReducer";
-import { reducer as formReducer } from "redux-form";
+import cocktailReducer from "./CocktailReducer";
+import SelectionReducer from "./SelectionReducer";
+import AppReducer from "./AppReducer";
 
 const rootReducer = combineReducers({
-    cocktails: cocktailsReducer,
-    selectedCocktailId: SelectionReducer
+    cocktails: cocktailReducer,
+    selectedCocktailId: SelectionReducer,
+    appReducer: AppReducer
 });
 
 export default rootReducer;

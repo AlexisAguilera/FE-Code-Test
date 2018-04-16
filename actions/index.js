@@ -17,7 +17,7 @@ export function getCocktails() {
         CocktailService.getCocktails().then(resp => {
             dispatch({
                 type: Actions.ACT_LOAD_COCKTAILS,
-                props: resp
+                props: resp.data.drinks
             });
             dispatch({
                 type: Actions.CHANGE_APP_PROPS,

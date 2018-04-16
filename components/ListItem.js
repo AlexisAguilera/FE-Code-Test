@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import CardSection from './CardSection';
 import Card from './Card';
-import Stars from './stars';
 import * as actions from '../actions';
 
 class ListItem extends Component {
@@ -14,20 +13,19 @@ class ListItem extends Component {
         return (
             <Card>
                 <TouchableOpacity
-                    onPress={() => Actions.CocktailDetail({ detail: this.props.cocktailDetailId })}
+                    onPress={() => {console.log("hola");}}
                 >
                     <CardSection>
+                        <Text style={styles.textStyle} >
+                          {strDrink}
+                        </Text>
                         <Image
                             style={styles.imageStyle}
+                            prefetch={{ uri: strDrinkThumb }}
                             source={{ uri: strDrinkThumb }}
                         />
                     </CardSection>
                 </TouchableOpacity>
-                <CardSection>
-                    <Text style={styles.textStyle} >
-                        {strDrink}
-                    </Text>
-                </CardSection>
             </Card>
 
         );
