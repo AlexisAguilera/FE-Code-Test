@@ -15,13 +15,12 @@ class Home extends Component {
   }
 
   render() {
-    console.log("this.props.cocktails.cocktails", this.props.cocktails.cocktails);
     return (
       <View style={{ flex: 1 }}>
         <Header/>
         {this.props.loading ?
           <Spinner />:
-        <ListView cocktails={this.props.cocktails.cocktails}/>}
+        <ListView cocktails={this.props.cocktails}/>}
       </View>
     );
 
@@ -31,7 +30,7 @@ class Home extends Component {
 
 
 function mapStateToProps(store) {
-	return { cocktails: store.cocktails, loading: store.appReducer.loading };
+	return { cocktails: store.cocktails.cocktails, loading: store.appReducer.loading };
 }
 
 
