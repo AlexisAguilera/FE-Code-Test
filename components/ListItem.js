@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import { Text, Image, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import {COCKTAIL_DETAILS} from "../config/RouteConstant";
 import CardSection from './CardSection';
 import Card from './Card';
-import * as actions from '../actions';
 
 class ListItem extends Component {
+
+    selectCocktail() {
+      Actions.push(COCKTAIL_DETAILS, {idDrink:this.props.cocktail.idDrink})
+    }
 
     render() {
         const { strDrink, strDrinkThumb, idDrink  } = this.props.cocktail;
         return (
             <Card>
                 <TouchableOpacity
-                    onPress={() => {console.log("hola");}}
+                    onPress= {this.selectCocktail.bind(this)}
                 >
                     <CardSection>
                         <Text style={styles.textStyle} >
@@ -23,6 +27,7 @@ class ListItem extends Component {
                             style={styles.imageStyle}
                             prefetch={{ uri: strDrinkThumb }}
                             source={{ uri: strDrinkThumb }}
+                            resizeMode="contain"
                         />
                     </CardSection>
                 </TouchableOpacity>
@@ -85,4 +90,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, actions)(ListItem);
+export default connect(mapStateToProps, null)(ListItem);

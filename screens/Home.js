@@ -17,7 +17,7 @@ class Home extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Header/>
+        <Header title="Random Drinks 0.1"/>
         {this.props.loading ?
           <Spinner />:
         <ListView cocktails={this.props.cocktails}/>}

@@ -19,8 +19,9 @@ export default class CocktailService {
 	static getDetailCocktails(id) {
 		return new Promise((resolve, reject)=> {
 			try{
-				let endpoint = CocktailsConfig.endpointGetDetailCocktail + "?i="+id;
+				let endpoint = CocktailsConfig.endpointGetDetailCoctails + "?i="+id;
 				let response = axios.get(endpoint);
+				resolve(response);
 			}
 			catch(err) {
 				reject(err);

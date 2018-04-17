@@ -1,19 +1,29 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import { TextInput, View, TouchableWithoutFeedback, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Actions } from 'react-native-router-flux';
 
 
-const Header = () => {
+const Header = (props) => {
+  console.log("props",props);
+    const { showBack=false, title } = props;
     const { viewStyle } = styles;
+    console.log("showBack", showBack);
     return (
         <View style={viewStyle}>
-            <Icon name="search" size={20} color='white' />
-            <TextInput
-                style={styles.inputStyle}
-                label="Seacher"
-                placeholder="Escribí el cocktail que buscas"
-                underlineColorAndroid="transparent"
-            />
+          <View style={{ flex: showBack ? 0.2 : 0 }}>
+            {showBack ?
+              <TouchableWithoutFeedback
+                onPress={() => Actions.pop()}>
+              <Icon name="arrow-left" size={20} color='#fff' style={{margin: 20}} />
+              </TouchableWithoutFeedback> : null}
+          </View>
+          <View>
+          <Text style={styles.textStyle}>
+            {title}
+          </Text>
+          </View>
+
         </View>
     );
 };
@@ -36,7 +46,14 @@ const styles = {
         height: 40,
         justifyContent: 'space-around',
         backgroundColor: 'white'
-    }
+    },
+    textStyle: {
+     TextAlign: 'center',
+     fontSize: 20,
+     color: '#fff',
+     fontWeight: '300',
+     alignSelf: 'center'
+   }
 };
 
 export default Header;

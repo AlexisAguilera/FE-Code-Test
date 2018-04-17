@@ -7,7 +7,8 @@ export function selectCocktail(cockTailId) {
         type: Actions.CHANGE_APP_PROPS,
         props: true
       });
-      CocktailService.endpointGetDetailCoctails(cockTailId).then(resps => {
+      CocktailService.getDetailCocktails(cockTailId).then(resp => {
+        console.log("RESP", resp);
         dispatch({
           type: Actions.SELECTED_COCKTAIL,
           props: resp.data.drinks[0]

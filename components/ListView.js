@@ -9,7 +9,7 @@ class ListView extends Component {
       <FlatList
         data={this.props.cocktails}
         renderItem={({ item }) => <ListItem cocktail={item} />}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => index.toString()}
       />
     );
   }
