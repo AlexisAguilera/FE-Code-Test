@@ -17,13 +17,13 @@ export default class CocktailService {
 	}
 
 	static getDetailCocktails(id) {
-		return new Promise((resolve, reject)=> {
-			try{
-				let endpoint = CocktailsConfig.endpointGetDetailCoctails + "?i="+id;
+		return new Promise((resolve, reject) => {
+			try {
+				let endpoint = CocktailsConfig.endpointGetDetailCocktails + "?i=" + id;
 				let response = axios.get(endpoint);
 				resolve(response);
 			}
-			catch(err) {
+			catch (err) {
 				reject(err);
 			}
 		})

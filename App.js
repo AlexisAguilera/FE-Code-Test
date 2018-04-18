@@ -5,8 +5,8 @@ import {
   Text,
   View
 } from 'react-native';
-import Router from "./config/Router";
-import reducers from "./reducers";
+import Router from "./src/config/Router";
+import reducers from "./src/reducers";
 import { Root } from "native-base";
 import { Provider } from "react-redux";
 import ReduxThunk from "redux-thunk";

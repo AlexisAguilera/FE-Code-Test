@@ -2,36 +2,33 @@ import React, { Component } from 'react';
 import { Text, Image, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import {COCKTAIL_DETAILS} from "../config/RouteConstant";
-import CardSection from './CardSection';
-import Card from './Card';
+import { COCKTAIL_DETAILS } from "../config/RouteConstant";
+
 
 class ListItem extends Component {
 
     selectCocktail() {
-      Actions.push(COCKTAIL_DETAILS, {idDrink:this.props.cocktail.idDrink})
+        Actions.push(COCKTAIL_DETAILS, { idDrink: this.props.cocktail.idDrink })
     }
 
     render() {
-        const { strDrink, strDrinkThumb, idDrink  } = this.props.cocktail;
+        const { strDrink, strDrinkThumb, idDrink } = this.props.cocktail;
         return (
-            <Card>
+            <View style={{ backgroundColor: '#fff', marginHorizontal: 5, borderRadius: 5, marginVertical: 10, padding: 15 }}>
                 <TouchableOpacity
-                    onPress= {this.selectCocktail.bind(this)}
-                >
-                    <CardSection>
+                    onPress={this.selectCocktail.bind(this)}>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
                         <Text style={styles.textStyle} >
-                          {strDrink}
+                            {strDrink}
                         </Text>
                         <Image
                             style={styles.imageStyle}
                             prefetch={{ uri: strDrinkThumb }}
                             source={{ uri: strDrinkThumb }}
-                            resizeMode="contain"
-                        />
-                    </CardSection>
+                            resizeMode="contain" />
+                    </View>
                 </TouchableOpacity>
-            </Card>
+            </View>
 
         );
     }
@@ -39,17 +36,19 @@ class ListItem extends Component {
 
 const styles = {
     imageStyle: {
-        borderTopLeftRadius: 8,
-        borderTopRightRadius: 8,
+        borderRadius: 8,
         height: 200,
         flex: 1,
-        width: null
+        width: null,
+        // paddingHorizontal:50,
+        // paddingVertical:50
     },
     textStyle: {
         fontSize: 18,
         fontFamily: 'Roboto Medium',
         color: 'black',
-        fontWeight: '500'
+        fontWeight: '500',
+        flex: 1
     },
     viewStyleContent: {
         padding: 1,

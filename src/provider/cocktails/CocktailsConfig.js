@@ -8,7 +8,7 @@ export default class CocktailConfig {
         return `${CocktailConfig.base}/filter.php?g=Cocktail_glass`;
     }
 
-    static get endpointGetDetailCoctails() {
+    static get endpointGetDetailCocktails() {
         return `${CocktailConfig.base}/lookup.php`;
     }
 }
